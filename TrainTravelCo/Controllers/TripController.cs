@@ -27,9 +27,12 @@ namespace TrainTravelCo.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddTrip(Models.Trip newTrip)
+        public IActionResult AddTrip(Models.TripDTO newTrip)
         {
-            manager.AddTrip(newTrip);
+
+
+
+            manager.CreateTrip(newTrip.Start, newTrip.End, newTrip.dateTime, newTrip.TrainId);
             return Ok();    
         }
     }

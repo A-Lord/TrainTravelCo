@@ -23,6 +23,13 @@ namespace TrainTravelCo.Models
         {
             TripId = TripID.GetId();
         }
+        public Trip(Models.TripDTO safeTrip)
+        {
+            TripId = TripID.GetId();
+            Start = safeTrip.Start;
+            End = safeTrip.End;
+            dateTime = safeTrip.dateTime;
+        }
 
     }
 }

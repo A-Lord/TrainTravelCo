@@ -10,18 +10,14 @@ namespace TrainTravelCo.Models
 {
     public class TripDTO
     {
-        
+        [Required]
         public string Start { get; set; }
         [Required]
         public string End { get; set; }
         [Required]
         public string dateTime { get; set; }
         [Required]
-        public Train theTripsTrain { get; set; }
-
-        //public List<Booking> BookingHistory { get; set; }
-
-       
+        public int TrainId { get; set; }
 
 
     }
