@@ -22,7 +22,7 @@ namespace TrainTravelCo.Controllers
         [HttpGet("List")]
         public IActionResult GetList()
         {
-            
+            //if(Managers.TripManager)
             return Ok(manager.GetAllTrips());
         }
 
