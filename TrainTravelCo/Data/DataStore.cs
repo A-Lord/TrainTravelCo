@@ -22,7 +22,12 @@ namespace TrainTravelCo.Data
         } 
         private DataStore()
         {
-
+            _trains.Add(new Models.Train());
+            _trains.Add(new Models.Train());
+            _trains.Add(new Models.Train());
+            _trips.Add(new Models.Trip { Start = "Örebro", End = "Stockholm", dateTime = "19.00", theTripsTrain = _trains[1]});
+            _trips.Add(new Models.Trip { Start = "Malmö", End = "Stockholm", dateTime = "12.00", theTripsTrain = _trains[2] });
+            _trips.Add(new Models.Trip { Start = "Saturnus", End = "Prag", dateTime = "04.00", theTripsTrain = _trains[1] });
         }
         public List<Models.Train> GetAllTrains()
         {
