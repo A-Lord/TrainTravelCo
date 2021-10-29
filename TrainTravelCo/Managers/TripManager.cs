@@ -16,24 +16,31 @@ namespace TrainTravelCo.Managers
         {
             return trainData.GetAllTrips();
         }
+        public List<Models.TripDTO> GetAllTripsDTO()
+        {
+            return trainData.GetAllTripsDTO();
+        }
+
+
         public void AddTrip(Models.Trip newTrip)
         {
             trainData.AddTrip(newTrip);
         }
-        public void CreateTrip(string start,string destination,string departureTime,int trainId)
+        public void CreateTrip(Models.TripDTO inputedTrip)
         {
             try
             {
-                var theTrain = trainData.GetAllTrains().Find(x => x.Id.Equals(trainId));
+                var theTrain = trainData.GetAllTrains().Find(x => x.Id.Equals(inputedTrip.TrainId));
                 var newTrip = new Models.Trip
                 {
-                    Start = start,
-                    End = destination,
-                    dateTime = departureTime,
+                    Start = inputedTrip.Start,
+                    End = inputedTrip.End,
+                    dateTime = inputedTrip.dateTime,
                     theTripsTrain = theTrain
-                    
+
                 };
                 trainData.AddTrip(newTrip);
+                trainData.AddTripDTO(inputedTrip);
             }
             catch (Exception)
             {

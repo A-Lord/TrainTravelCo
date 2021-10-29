@@ -19,6 +19,7 @@ namespace TrainTravelCo.Models
         [Required]
         public int TrainId { get; set; }
 
+        public List<BookingDTO> BookingHistory { get; set; }
 
     }
 }

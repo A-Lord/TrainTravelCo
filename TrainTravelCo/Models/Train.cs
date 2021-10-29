@@ -14,12 +14,12 @@ namespace TrainTravelCo.Models
         public int Seats {  get; set; }
 
 
-        public Train()
+        public Train(int seats)
         {
             RegNr = 0;
             Id = _id;
             _id++;
-            
+            Seats = seats;
         }
 
 

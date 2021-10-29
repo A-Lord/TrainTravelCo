@@ -34,7 +34,7 @@ namespace TrainTravelCo.Controllers
             }
 
         }
-        [HttpPost]
+        [HttpPost("BookTrip")]
         public IActionResult BookTrip(Models.Customer customer,[FromQuery]int tripId)
         {
             Models.Customer customer1 = new Models.Customer

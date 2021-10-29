@@ -15,13 +15,14 @@ namespace TrainTravelCo.Models
 
         public Train theTripsTrain { get; set; }
 
-        public List<Booking> BookingHistory {  get; set; } 
+        public List<Models.Booking> BookingHistory {  get; set; } 
 
         public int TripId { get; }
 
         public Trip()
         {
             TripId = TripID.GetId();
+            BookingHistory = new List<Models.Booking>();
         }
         public Trip(Models.TripDTO safeTrip)
         {
@@ -29,6 +30,17 @@ namespace TrainTravelCo.Models
             Start = safeTrip.Start;
             End = safeTrip.End;
             dateTime = safeTrip.dateTime;
+        }
+        public List<Models.BookingDTO> ReturnBookingsDTO()
+        {
+            List<Models.BookingDTO> bookingDTOs= new List<Models.BookingDTO>();
+                       
+                foreach (var item in BookingHistory)
+                {
+                    bookingDTOs.Add(new Models.BookingDTO { Customer = item.Customer });
+                }
+            
+            return bookingDTOs;
         }
 
     }

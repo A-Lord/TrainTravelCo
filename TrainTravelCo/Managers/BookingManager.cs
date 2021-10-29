@@ -13,16 +13,16 @@ namespace TrainTravelCo.Managers
 
 
         }
-        public List<Models.Trip> Search(string dateTime)
+        public List<Models.TripDTO> Search(string dateTime)
         {
             //try
             //{
-            List<Models.Trip> trips = new List<Models.Trip>();
+            List<Models.TripDTO> trips = new List<Models.TripDTO>();
             foreach (var item in trainData.GetAllTrips())
             {
-                if (item.dateTime == dateTime)
+                if (item.dateTime == dateTime && item.BookingHistory.Count <= item.theTripsTrain.Seats)
                 {
-                    trips.Add(item);
+                    trips.Add(trainData.TripToDTO(item));
                 }
             }
                 //trainData.GetAllTrips();
@@ -51,7 +51,21 @@ namespace TrainTravelCo.Managers
                         trips = item;
                     }
                 }
-                Models.Booking booking = new Models.Booking { Customer = customer, Trip = trips };
+                try
+                {
+                    if (trips.BookingHistory.Count < trips.theTripsTrain.Seats)
+                    {
+                        Models.Booking booking = new Models.Booking { Customer = customer, Trip = trips };
+                    }
+                    else
+                        throw new Exception();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            
             }
             catch (Exception)
             {

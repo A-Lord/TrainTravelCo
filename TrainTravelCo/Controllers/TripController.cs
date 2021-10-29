@@ -23,16 +23,17 @@ namespace TrainTravelCo.Controllers
         public IActionResult GetList()
         {
             //if(Managers.TripManager)
-            return Ok(manager.GetAllTrips());
+            return Ok(manager.GetAllTripsDTO());
         }
 
+        
         [HttpPost]
         public IActionResult AddTrip(Models.TripDTO newTrip)
         {
 
+            
 
-
-            manager.CreateTrip(newTrip.Start, newTrip.End, newTrip.dateTime, newTrip.TrainId);
+            manager.CreateTrip(newTrip);
             return Ok();    
         }
     }
